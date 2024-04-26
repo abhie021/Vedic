@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+    
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #24dbc0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #000000;
+}
+
+.jumbotron h1 {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  text-align: center;
+  -webkit-text-stroke: 0.2px rgb(0, 0, 0); 
+}
+
+.jumbotron p {
+  font-size: 20px;
+  padding-left:20%;
+  padding-right:20%;
+  margin-bottom: 0px;
+  text-align: center;
+  color: #ffffff;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="#" class="logo">Vedic</a>
+    
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li> 
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+    
+  </div>
+</header>
+
+<div class="video-background">
+  <video autoplay loop muted>
+    <source src="static\Medical White DNA Background video _ Footage _ Screensaver.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="jumbotron">
+    <h1>About Us</h1>
+    <p>Welcome to our healthcare chatbot system!</p>
+    <p>Our chatbot system is designed to provide you with quick and convenient access to healthcare assistance anytime, anywhere. Whether you have questions about symptoms, need advice on medications, or want to schedule appointments, our chatbot is here to help.</p>
+    <p>We understand the importance of easy access to healthcare information and services, and our goal is to make your healthcare experience as seamless and efficient as possible.</p>
+    <p>Explore our chatbot system today and experience the future of healthcare support!</p>
+  </div>
+</body>
+</html>

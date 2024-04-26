@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Chatbot</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <body>
+    </py-script src="chatbot.py">
+    </py-script>
+</body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ddd;
+        }
+
+        .chat-container {
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            overflow: hidden;
+            animation: slide-up 0.5s ease-out;
+        }
+
+        .chat-header {
+            background-color: #00bcd4;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: fade-in 0.5s ease-out;
+        }
+
+        .chat-header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            animation: bounce 0.5s ease-out;
+        }
+
+        .chat-header .logo h3 {
+            font-weight: 600;
+            font-size: 18px;
+            animation: slide-left 0.5s ease-out;
+        }
+
+        .chat-header .icons i {
+            font-size: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            animation: rotate 0.5s ease-out;
+        }
+
+        .chat-body {
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 15px;
+            animation: slide-up 0.5s ease-out;
+        }
+
+        .chat-message.sent {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 10px;
+            animation: scale-up 0.5s ease-out;
+        }
+
+        .chat-message .avatar.bot {
+            background-color: #00bcd4;
+            color: #fff;
+        }
+
+        .chat-message .message-content {
+            background-color: #444;
+            padding: 10px;
+            border-radius: 15px;
+            max-width: 70%;
+            word-wrap: break-word;
+            animation: slide-left 0.5s ease-out;
+        }
+
+        .chat-message.sent .message-content {
+            background-color: #00bcd4;
+            color: #fff;
+            animation: slide-right 0.5s ease-out;
+        }
+
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #222;
+            animation: fade-in 0.5s ease-out;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: #444;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            color: #ddd;
+            animation: slide-left 0.5s ease-out;
+        }
+
+        .chat-input button {
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            animation: scale-up 0.5s ease-out;
+        }
+
+        .chat-input button:hover {
+            background-color: #00acc1;
+        }
+
+        .disclaimer {
+            font-size: 13px;
+            color: #666;
+            max-width: 700px;
+            position: absolute; 
+            top: 7%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+            text-align: center; 
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes scale-up {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="disclaimer">
+    <p>For specific medical concerns or conditions, it is strongly recommended that users consult with a qualified healthcare professional.
+            While this chatbot aims to provide helpful information, it is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+</div>   
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='62m0pq0y.png') }}" alt="Health Logo">
+
+                <h3>Vedic</h3>
+            </div>
+            <div class="icons">
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+        </div>
+        <div class="chat-body">
+           
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message..." id="message-input">
+            <button id="send-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const chatBody = document.querySelector('.chat-body');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+    
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message) {
+                addMessageToChat('user', message);
+                messageInput.value = '';
+    
+                fetch('/api/send-message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    addMessageToChat(data.sender, data.message);
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    
+        function addMessageToChat(sender, message) {
+            const chatMessage = document.createElement('div');
+            chatMessage.classList.add('chat-message');
+            if (sender === 'user') {
+                chatMessage.classList.add('sent');
+            }
+    
+            const avatar = document.createElement('div');
+            avatar.classList.add('avatar');
+            if (sender === 'bot') {
+                avatar.classList.add('bot');
+                avatar.textContent = 'Bot';
+            } else {
+                avatar.textContent = 'You';
+            }
+    
+            const messageContent = document.createElement('div');
+            messageContent.classList.add('message-content');
+            messageContent.textContent = message;
+    
+            chatMessage.appendChild(avatar);
+            chatMessage.appendChild(messageContent);
+            chatBody.appendChild(chatMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>
